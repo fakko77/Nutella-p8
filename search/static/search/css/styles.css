@@ -10217,3 +10217,11 @@ header.masthead h1 {
 .green{
     color:green;
 }
+
+@media screen and (max-width: 640px) {
+  .mb-2{
+    width: 75px;
+  }
+  .sub-obj {
+    width: 48%;
+}

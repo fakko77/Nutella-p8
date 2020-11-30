@@ -17,8 +17,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../nutella_project" />
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="b3983fc6-9419-4959-91ef-7937737eb7ab" name="Default Changelist" comment="" />
@@ -34,5 +39,9 @@
       <screen x="1920" y="5" width="1920" height="1040" />
     </state>
     <state x="2645" y="327" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040/3840.54.1280.984/1920.5.1920.1040@1920.5.1920.1040" timestamp="1606204531713" />
+    <state x="-1180" y="275" key="FileChooserDialogImpl" timestamp="1606751214721">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1180" y="275" key="FileChooserDialogImpl/-1920.0.1920.1040/0.0.2560.1400@-1920.0.1920.1040" timestamp="1606751214721" />
   </component>
 </project>
