@@ -29,7 +29,7 @@ if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
 else:
     DEBUG = True
-ALLOWED_HOSTS = ['p8nutella.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['68.183.25.236', '127.0.0.1']
 
  # Application definition
 
@@ -56,7 +56,7 @@ MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+   
 ]
 
 ROOT_URLCONF = 'nutella_project.urls'
@@ -85,11 +85,11 @@ WSGI_APPLICATION = 'nutella_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'pur_beurre',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': '127.0.0.1',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'nutella',
+        'USER': 'morgan',
+        'PASSWORD': 'ty',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -152,7 +152,7 @@ if os.environ.get('ENV') == 'PRODUCTION':
         os.path.join(PROJECT_ROOT, 'static'),
     )
 
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
     db_from_env = dj_database_url.config(conn_max_age=500)
     DATABASES['default'].update(db_from_env)
 
