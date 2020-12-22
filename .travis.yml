@@ -13,5 +13,5 @@ services:
   - postgresql
 
 script:
-  - cd Nutella-p8/ && python manage.py test
+  - ls/ && python manage.py test
 
