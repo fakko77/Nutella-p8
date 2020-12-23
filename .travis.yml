@@ -3,7 +3,8 @@ python:
   - '3.8'
 before_script:
   - pip install -r requirements.txt
-  - cd ./nutella_project/
+  - cd /nutella_project
+  - ls
 branches:
     only:
         - test
@@ -14,5 +15,5 @@ services:
   - postgresql
 
 script:
-  - python manage.py test --keepdb
+  - python manage.py test 
 
