@@ -8,7 +8,7 @@ branches:
     only:
         - test
             
-env: DJANGO_SETTINGS_MODULE="nutella_project.settings.travis"
+env: DJANGO_SETTINGS_MODULE="nutella_project.settings"
 
 services:
   - postgresql
