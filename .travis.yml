@@ -13,5 +13,5 @@ services:
   - postgresql
 
 script:
-  - pytest
+  - test
 
