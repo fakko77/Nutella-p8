@@ -14,5 +14,5 @@ services:
   - postgresql
 
 script:
-  - python manage.py test
+  - pytest
 
