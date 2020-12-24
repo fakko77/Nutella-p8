@@ -3,7 +3,6 @@ python:
   - '3.8'
 before_script:
   - pip install -r requirements.txt
-  - cd ./nutella_project
 branches:
     only:
         - test
@@ -14,5 +13,9 @@ services:
   - postgresql
 
 script:
+<<<<<<< HEAD
   - pytest search
+=======
+  - test
+>>>>>>> test
 
