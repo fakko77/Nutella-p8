@@ -13,9 +13,4 @@ services:
   - postgresql
 
 script:
-<<<<<<< HEAD
   - pytest search
-=======
-  - test
->>>>>>> test
-
