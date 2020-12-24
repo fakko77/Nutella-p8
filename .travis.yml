@@ -3,7 +3,7 @@ python:
   - '3.8'
 before_script:
   - pip install -r requirements.txt
-  - cd search/tests
+  #- cd search/tests
 branches:
     only:
         - test
@@ -14,5 +14,5 @@ services:
   - postgresql
 
 script:
-  - pytest 
+  - pytest
 
