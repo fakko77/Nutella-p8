@@ -3,6 +3,8 @@
 # from django.contrib.auth.models import User
 #
 #
+def test_capital_case():
+    assert "Semaphore" == "Semaphore"
 # class TestSearchForm(TestCase):
 #     """class for testing form serach"""
 #     def test_anonymous_search(self):
