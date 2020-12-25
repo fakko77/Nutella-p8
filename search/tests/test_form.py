@@ -1,30 +1,34 @@
-# from search.forms import SignUpForm
-# from django.test import TestCase, Client
-# from django.contrib.auth.models import User
-#
-#
-def test_capital_case():
-    assert "Semaphore" == "Semaphore"
-# class TestSearchForm(TestCase):
-#     """class for testing form serach"""
-#     def test_anonymous_search(self):
-#         """test for launch a search not connected """
-#         response = self.client.get('/search/?query=', follow=True)
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'search/index.html')
-#         response = self.client.post('/search/?query=', follow=True)
-#         self.assertEqual(response.status_code, 200)
-#
-#     def test_login_search(self):
-#         """test for launch a search connected """
-#         c = Client()
-#         self.user = User.objects.create_user(username='testuser', password='12345')
-#         c.force_login(self.user)
-#         response = c.get('/search/?query=', follow=True)
-#         self.assertEqual(response.status_code, 200)
-#         self.assertTemplateUsed(response, 'search/search.html')
-#
-#
+from search.forms import SignUpForm
+from django.test import TestCase, Client
+import pytest
+from pytest_django.asserts import assertTemplateUsed
+from django.contrib.auth.models import User
+
+
+class TestSearchForm:
+
+    """class for testing form serach"""
+    def test_anonymous_search(self):
+        """test for launch a search not connected """
+        c = Client()
+        response = c.get('/search/?query=', follow=True)
+        assert response.status_code == 200
+        assertTemplateUsed(response, 'search/index.html')
+        response = c.post('/search/?query=', follow=True)
+        assert response.status_code == 200
+
+    @pytest.fixture
+    def test_login_search(self):
+        """test for launch a search connected """
+        c = Client()
+        user = User.objects.create_user(username='testuser', password='12345')
+        c.force_login(user)
+        response = c.get('/search/?query=', follow=True)
+        assert response.status_code == 200
+        assertTemplateUsed(response, 'search/search.html')
+
+
+
 # class LogInTest(TestCase):
 #     """class for testing form login"""
 #     def setUp(self):
