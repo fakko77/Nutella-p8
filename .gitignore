@@ -1,0 +1,6 @@
+.dea/
+.pytest_cache/
+venv/
+.Procfile
+.coverage
+env/
