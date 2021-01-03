@@ -88,10 +88,10 @@ WSGI_APPLICATION = 'nutella_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'nutella',
-        'USER': 'morgan',
-        'PASSWORD': 'ty',
-        'HOST': 'localhost',
+        'NAME': 'pur_beurre',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
