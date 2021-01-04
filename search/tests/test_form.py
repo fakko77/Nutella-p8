@@ -28,31 +28,30 @@ class TestSearchForm:
         assertTemplateUsed(response, 'search/search.html')
 
 
+class LogInTest(TestCase):
+    """class for testing form login"""
+    def setUp(self):
+        self.credentials = {
+                'username': 'fakko',
+                'password': 'ty'}
+        User.objects.create_user(**self.credentials)
 
-# class LogInTest(TestCase):
-#     """class for testing form login"""
-#     def setUp(self):
-#         self.credentials = {
-#                 'username': 'fakko',
-#                 'password': 'ty'}
-#         User.objects.create_user(**self.credentials)
-#
-#     def test_login_post(self):
-#         """form post """
-#         response = self.client.post('/search/connect/', self.credentials, follow=True)
-#         self.assertTrue(response.context['user'].is_active)
-#
-#
-# class SingTest(TestCase):
-#     """class for testing form sing up """
-#     def test_register_false(self):
-#         """test register false"""
-#         form_params = {'first_name': 'John',
-#                        'last_name': 'Doe',
-#                        'email': 'john@doe',
-#                        'password': 'a',
-#                        'password_confirm': 'a',
-#                        'g-recaptcha-response': 'PASSED'}
-#         form = SignUpForm(form_params)
-#         self.assertFalse(form.is_valid())
-#
+    def test_login_post(self):
+        """form post """
+        response = self.client.post('/search/connect/', self.credentials, follow=True)
+        self.assertTrue(response.context['user'].is_active)
+
+
+class SingTest(TestCase):
+    """class for testing form sing up """
+    def test_register_false(self):
+        """test register false"""
+        form_params = {'first_name': 'John',
+                       'last_name': 'Doe',
+                       'email': 'john@doe',
+                       'password': 'a',
+                       'password_confirm': 'a',
+                       'g-recaptcha-response': 'PASSED'}
+        form = SignUpForm(form_params)
+        self.assertFalse(form.is_valid())
+

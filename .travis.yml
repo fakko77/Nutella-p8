@@ -3,6 +3,7 @@ python:
   - '3.8'
 before_script:
   - pip install -r requirements.txt
+  - psql -c 'create database nutella;' -U postgres
   - cd search/tests
 branches:
     only:
