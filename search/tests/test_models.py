@@ -1,6 +1,5 @@
 from django.test import TestCase
 from search.models import Category, Product, Favorite
-import pytest
 
 
 class TestProduct(TestCase):
@@ -10,19 +9,19 @@ class TestProduct(TestCase):
         category = Category.objects.create(name="Test")
         objectTest = Product.objects.create(name="objectTest", score="A", img_url="", url="", ingredient="",
                                             category_product=category)
-        assert objectTest.categoryName() == "Test"
+        self.assertEqual(objectTest.categoryName(), "Test")
 
     def test_product_score(self):
         """Test for score is not equal"""
         objectTest = Product.objects.create(name="objectTest1", score="A", img_url="", url="", ingredient="")
         objectTest1 = Product.objects.create(name="objectTest2", score="B", img_url="", url="", ingredient="")
-        assert objectTest.score != objectTest1.score
+        self.assertNotEqual(objectTest.score, objectTest1.score)
 
     def test_product_name(self):
         """Test for name is not equal"""
         objectTest = Product.objects.create(name="objectTest1", score="A", img_url="", url="", ingredient="")
         objectTest1 = Product.objects.create(name="objectTest2", score="B", img_url="", url="", ingredient="")
-        assert objectTest != objectTest1
+        self.assertNotEqual(objectTest, objectTest1)
 
 
 class TestFavorite(TestCase):
@@ -32,5 +31,4 @@ class TestFavorite(TestCase):
         fav = Favorite.objects.create(user=1)
         objectTest = Product.objects.create(name="objectTest1", score="A", img_url="", url="", ingredient="")
         fav.products.add(objectTest)
-        assert fav.products.name == objectTest.favorites.name
-
+        self.assertEqual(fav.products.name, objectTest.favorites.name)

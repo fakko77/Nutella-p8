@@ -1,8 +1,8 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from django.forms.utils import ErrorList
-from django.forms import TextInput, EmailInput, PasswordInput
+from django.forms import TextInput, EmailInput, PasswordInput, CharField
 
 
 class ParagraphError(ErrorList):
@@ -27,3 +27,4 @@ class SignUpForm(UserCreationForm):
             'password2': PasswordInput(attrs={'class': 'form-control'}),
 
         }
+

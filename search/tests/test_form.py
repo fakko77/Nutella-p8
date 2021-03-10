@@ -1,31 +1,26 @@
 from search.forms import SignUpForm
 from django.test import TestCase, Client
-import pytest
-from pytest_django.asserts import assertTemplateUsed
 from django.contrib.auth.models import User
 
 
-class TestSearchForm:
-
+class TestSearchForm(TestCase):
     """class for testing form serach"""
     def test_anonymous_search(self):
         """test for launch a search not connected """
-        c = Client()
-        response = c.get('/search/?query=', follow=True)
-        assert response.status_code == 200
-        assertTemplateUsed(response, 'search/index.html')
-        response = c.post('/search/?query=', follow=True)
-        assert response.status_code == 200
+        response = self.client.get('/search/?query=', follow=True)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'search/index.html')
+        response = self.client.post('/search/?query=', follow=True)
+        self.assertEqual(response.status_code, 200)
 
-    @pytest.fixture
     def test_login_search(self):
         """test for launch a search connected """
         c = Client()
-        user = User.objects.create_user(username='testuser', password='12345')
-        c.force_login(user)
+        self.user = User.objects.create_user(username='testuser', password='12345')
+        c.force_login(self.user)
         response = c.get('/search/?query=', follow=True)
-        assert response.status_code == 200
-        assertTemplateUsed(response, 'search/search.html')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'search/search.html')
 
 
 class LogInTest(TestCase):
@@ -54,4 +49,3 @@ class SingTest(TestCase):
                        'g-recaptcha-response': 'PASSED'}
         form = SignUpForm(form_params)
         self.assertFalse(form.is_valid())
-

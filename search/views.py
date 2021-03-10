@@ -1,11 +1,14 @@
 from .models import Product, Favorite
+from django.contrib import messages
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.contrib.auth import login, authenticate
 from .forms import SignUpForm, ParagraphError
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
 
 
 def singup(request):
@@ -34,6 +37,26 @@ def singup(request):
 
         }
     return render(request, 'search/signup.html', context)
+
+
+def change_password(request):
+    """view for change password of user"""
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST, error_class=ParagraphError)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return render(request, 'search/account.html')
+
+        else:
+            messages.error(request, 'Please correct the error below.')
+            pass
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'search/edit.html', {
+        'form': form
+    })
 
 
 def login_page(request):
@@ -164,3 +187,7 @@ def legal_notice(request):
     """view return legal info"""
     return render(request, 'search/legal_notice.html')
 
+
+def edit_password(request):
+    """view for edit password"""
+    return render(request, 'search/edit.html')

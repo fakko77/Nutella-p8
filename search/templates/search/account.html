@@ -13,8 +13,17 @@
                         <h3>{{request.user.username}}</h3>
                         <br>
                         <h2>Votre email:</h2>
-                        <input type="text" id="name" name="name" disabled
+                        <input  type="text" id="name_input" name="name" disabled
                           placeholder="{{request.user.email}}">
+
+                        <h2>mot de password:</h2>
+                          <input type="text" id="password" name="password" disabled
+                          placeholder="*******"> <br><a href="{% url 'edit' %}">edit</a>
+
+
+
+
+
 
                 </div>
             </div>
