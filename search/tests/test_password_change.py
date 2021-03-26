@@ -4,8 +4,10 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 
 class PasswordChange(TestCase):
+    """test for check change password"""
 
     def test_incorrect_old_password(self):
+        """test for chek old password"""
         self.user = User.objects.create_user(username='testuser', password='12345')
         data = {
             'old_password': 'abcdr',
@@ -17,6 +19,7 @@ class PasswordChange(TestCase):
         self.assertEqual(form["old_password"].errors, [form.error_messages['password_incorrect']])
 
     def test_success_change_password(self):
+        """test for check check the password change """
         self.user = User.objects.create_user(username='testuser', password='12345')
         data = {
             'old_password': '12345',
